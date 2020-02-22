@@ -3,18 +3,7 @@ import Aux from '../../hoc/Aux'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-
-// const NavBar = () => {
-
-//     return (
-
-//         <AppBar position ='static'>
-
-//         </AppBar>
-//     )
-// }
-
-// export default NavBar
+import classes from './Layout.css'
 
 const layout = (props) => (
     <Aux>
@@ -26,7 +15,7 @@ const layout = (props) => (
             </Toolbar>
         </AppBar>
         <div> ToolBar, Sidebar, Backdrop</div>
-        <main>
+        <main className='content'>
             {props.children}
         </main>
     </Aux>
