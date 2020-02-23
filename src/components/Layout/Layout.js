@@ -1,24 +1,15 @@
 import React from 'react';
-import Aux from '../../hoc/Aux'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import classes from './Layout.css'
 
-const layout = (props) => (
+import Aux from '../../hoc/Aux';
+import classes from './Layout.css';
+
+const layout = ( props ) => (
     <Aux>
-        <AppBar position="static">
-            <Toolbar>
-              <Typography variant="h6" >
-                 Header
-             </Typography>
-            </Toolbar>
-        </AppBar>
-        <div> ToolBar, Sidebar, Backdrop</div>
-        <main className='content'>
+        <div>Toolbar, SideDrawer, Backdrop</div>
+        <main className={classes.Content}>
             {props.children}
         </main>
     </Aux>
-)
+);
 
 export default layout;
