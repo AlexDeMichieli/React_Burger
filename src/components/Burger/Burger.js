@@ -34,7 +34,7 @@ const burger = ( props ) => {
 
         })
 
-
+    //alternative ==>
     // let transformedIngredients = Object.keys( props.ingredients )
     //     .map( igKey => {
             
