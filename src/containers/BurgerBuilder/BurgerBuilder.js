@@ -19,10 +19,10 @@ class BurgerBuilder extends Component {
 
     render () {
         return (
-            <Aux>
+            // <Aux>
                 <Burger ingredients={this.state.ingredients} />
-                <div>Build Controls</div>
-            </Aux>
+                /* <div>Build Controls</div> */
+            // </Aux>
         );
     }
 }
