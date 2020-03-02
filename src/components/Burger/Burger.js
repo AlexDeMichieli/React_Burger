@@ -29,10 +29,19 @@ const burger = ( props ) => {
             ingList.push(keys[3])
         }
         
-        let ingredientsList = ingList.map(item => {
-            return <BurgerIngredient type={item} />;
-
+        let ingredientsList = ingList.map((item, index) => {
+            return <BurgerIngredient type={item} key ={index} />;
         })
+
+        if (ingredientsList.length ===0) {
+            
+            ingredientsList = <p>Add ingredients!</p>
+            
+        }
+
+
+
+        console.log(ingredientsList.length)
 
     //alternative ==>
     // let transformedIngredients = Object.keys( props.ingredients )
