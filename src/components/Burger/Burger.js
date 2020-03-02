@@ -41,7 +41,6 @@ const burger = ( props ) => {
 
 
 
-        console.log(ingredientsList.length)
 
     //alternative ==>
     // let transformedIngredients = Object.keys( props.ingredients )
