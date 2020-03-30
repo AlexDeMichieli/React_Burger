@@ -30,7 +30,8 @@ class BurgerBuilder extends Component {
             meat: 0,
         },
         totalPrice: 4,
-        purchasable: false
+        purchasable: false,
+        purchasing: false,
     }
 
     updatePurchaseState(ingredients){
@@ -42,6 +43,10 @@ class BurgerBuilder extends Component {
         }
         this.setState({purchasable: total > 0})
         
+    }
+
+    purchaseHandler =() => {
+        this.setState({purchasing: true})
     }
 
 
@@ -73,7 +78,7 @@ class BurgerBuilder extends Component {
         }
         const updatedCount = oldCount - 1
         const updatedIngredients = Object.assign({}, this.state.ingredients)
-        updatedIngredients[type] = updatedCount
+              updatedIngredients[type] = updatedCount
         const priceDeduction = INGREDIENT_PRICES[type];
         const oldPrice = this.state.totalPrice;
         const newPrice = oldPrice - priceDeduction;
@@ -81,8 +86,11 @@ class BurgerBuilder extends Component {
         console.log(this.state.purchasable,  this.state.ingredients)
 
         this.updatePurchaseState(updatedIngredients)
+    }
 
+    purchaseCancelHandler = () =>{
 
+        this.setState({purchasing:false});
     }
 
 
@@ -97,9 +105,9 @@ class BurgerBuilder extends Component {
         return (
             // <Aux>
             <div>
-            <Modal>
-                <OrderSummary ingredients = {this.state.ingredients}/>
-            </Modal>
+                <Modal show={this.state.purchasing} modalClosed ={this.purchaseCancelHandler}>
+                    <OrderSummary ingredients = {this.state.ingredients}/>
+                </Modal>
                 <Burger ingredients={this.state.ingredients} />
                 <BuildControls 
                     ingredientAdded= {this.addIngredientHandler}
@@ -107,6 +115,7 @@ class BurgerBuilder extends Component {
                     disabled={disableButton}
                     price = {this.state.totalPrice}
                     purchasable ={this.state.purchasable}
+                    ordered = {this.purchaseHandler}
                 />
             </div>
             // </Aux>
