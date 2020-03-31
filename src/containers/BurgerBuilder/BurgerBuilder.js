@@ -6,6 +6,7 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 
+
 const INGREDIENT_PRICES = {
 
     salad: 0.5,
@@ -92,27 +93,46 @@ class BurgerBuilder extends Component {
 
         this.setState({purchasing:false});
     }
+    
+    disableButton = () =>{
 
+        let switcher = '';
+        const ingredients = [...this.state.ingredients] 
+        if (ingredients.lenght >=1 ){
+            switcher = true;
+        } else {
+            switcher = false
+        }
+        return switcher
+    }
+
+    purchaseContinueHandler = () =>{
+        alert("Please Continue")
+    }
 
     render () {
 
-        const disableButton = Object.assign({}, this.state.ingredients)
-        for (let number in disableButton){
-            disableButton[number] = disableButton[number] <=0
-        }
+        // const disableButton = Object.assign({}, this.state.ingredients)
+        // for (let number in disableButton){
+        //     disableButton[number] = disableButton[number] <=0
+        // }
 
 
         return (
             // <Aux>
-            <div>
+            <div style ={{overflow:'scroll'}}>
                 <Modal show={this.state.purchasing} modalClosed ={this.purchaseCancelHandler}>
-                    <OrderSummary ingredients = {this.state.ingredients}/>
+                    <OrderSummary 
+                        ingredients = {this.state.ingredients}
+                        purchaseCanceled ={this.purchaseCancelHandler}
+                        purchaseContinued = {this.purchaseContinueHandler}
+                        />
                 </Modal>
                 <Burger ingredients={this.state.ingredients} />
                 <BuildControls 
                     ingredientAdded= {this.addIngredientHandler}
                     ingredientRemoved ={this.removeIngredientHandler}
-                    disabled={disableButton}
+                    disabled={this.disableButton()}
                     price = {this.state.totalPrice}
                     purchasable ={this.state.purchasable}
                     ordered = {this.purchaseHandler}
