@@ -120,7 +120,7 @@ class BurgerBuilder extends Component {
 
         return (
             // <Aux>
-            <div style ={{overflow:'scroll'}}>
+            <div style ={{overflow:'visible', paddingTop: '250px'}}>
                 <Modal show={this.state.purchasing} modalClosed ={this.purchaseCancelHandler}>
                     <OrderSummary 
                         ingredients = {this.state.ingredients}
