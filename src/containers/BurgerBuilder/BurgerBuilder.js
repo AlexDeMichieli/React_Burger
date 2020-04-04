@@ -147,7 +147,7 @@ class BurgerBuilder extends Component {
     //     .catch(err => {
     //         this.setState({loading:false, purchasing: false})
     //     })
-        this.props.history.push('/checkout')
+    this.props.history.push('/checkout')
     }
 
     render () {
@@ -161,7 +161,7 @@ class BurgerBuilder extends Component {
         return (
             // <Aux>
           
-           <div style ={{overflow:'visible', paddingTop: '250px'}}>
+           <div style ={{paddingTop: '50px', display: 'flex', minHeight: '100vh', flexDirection: 'column'}}>
                 <Modal show={this.state.purchasing} modalClosed ={this.purchaseCancelHandler}>
                 {!this.state.loading ? <OrderSummary 
                     ingredients = {this.state.ingredients}
@@ -170,15 +170,19 @@ class BurgerBuilder extends Component {
                     purchaseContinued = {this.purchaseContinueHandler}
                 /> : <Spinner></Spinner>}
                 </Modal>
-                    <Burger ingredients={this.state.ingredients} />
-                    <BuildControls 
-                        ingredientAdded= {this.addIngredientHandler}
-                        ingredientRemoved ={this.removeIngredientHandler}
-                        disabled={this.disableButton()}
-                        price = {this.state.totalPrice}
-                        purchasable ={this.state.purchasable}
-                        ordered = {this.purchaseHandler}
-                    /> 
+                    <div style={{flex: "1", overflow: 'scroll'}}>
+                        <Burger ingredients={this.state.ingredients}/>
+                    </div>
+                    <div>
+                        <BuildControls 
+                            ingredientAdded= {this.addIngredientHandler}
+                            ingredientRemoved ={this.removeIngredientHandler}
+                            disabled={this.disableButton()}
+                            price = {this.state.totalPrice}
+                            purchasable ={this.state.purchasable}
+                            ordered = {this.purchaseHandler}
+                        /> 
+                    </div>
             </div>
         // </Aux>
         );

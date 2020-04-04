@@ -1,21 +1,61 @@
-import React, { Component } from 'react';
-
-import Layout from './components/Layout/Layout';
+import React from 'react';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 import Checkout from './containers/Checkout/Checkout'
-import {Route, Switch} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-class App extends Component {
-  render () {
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+  tabs: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
+
+
+const App  = () => {
+  
+  const classes = useStyles();
+
     return (
-      <div>
-        <Switch>
-            <Route path ='/' exact component={BurgerBuilder}/>
-            <Route path ='/checkout' component={Checkout}/>
-        </Switch>
-      </div>
+
+      <Router>
+        <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar style = {{backgroundColor: "#A1C9F1", height: '90px'}}>
+            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                <MenuIcon />
+            </IconButton>
+            <div className={classes.title}>
+              <Button className ={classes.menuButton} color="inherit" label="Home" exact to="/" component={Link}>Home</Button>
+              <Button color="inherit" label="Checkout" exact to="/checkout" component={Link}>Checkout</Button>
+            </div>
+              <Button color="inherit">Login</Button>
+          </Toolbar>
+        </AppBar>
+            <Switch>
+                  <Route path ='/' exact component={BurgerBuilder}/>
+                  <Route path ='/checkout' component={Checkout}/>
+            </Switch>
+        </div>
+      </Router>
     );
   }
-}
 
 export default App;
