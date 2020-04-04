@@ -38,6 +38,23 @@ class BurgerBuilder extends Component {
         loading: false,
     }
 
+    componentDidMount(){
+        axios.get('/orders.json').then(res=>{
+            
+            let keys = res.data
+            if (keys == null){
+                this.setState(this.state.ingredients)  
+            } 
+            else {
+                keys = Object.entries(res.data)
+                console.log(keys)
+                this.setState({ingredients: keys[(keys.length)-1][1].ingredients})
+            }
+
+        })
+        
+    }
+
     updatePurchaseState(ingredients){
 
         const sum = Object.values(ingredients)
@@ -143,7 +160,8 @@ class BurgerBuilder extends Component {
 
         return (
             // <Aux>
-            <div style ={{overflow:'visible', paddingTop: '250px'}}>
+          
+           <div style ={{overflow:'visible', paddingTop: '250px'}}>
                 <Modal show={this.state.purchasing} modalClosed ={this.purchaseCancelHandler}>
                 {!this.state.loading ? <OrderSummary 
                     ingredients = {this.state.ingredients}
@@ -151,18 +169,17 @@ class BurgerBuilder extends Component {
                     purchaseContinued = {this.purchaseContinueHandler}
                 /> : <Spinner></Spinner>}
                 </Modal>
-
-                <Burger ingredients={this.state.ingredients} />
-                <BuildControls 
-                    ingredientAdded= {this.addIngredientHandler}
-                    ingredientRemoved ={this.removeIngredientHandler}
-                    disabled={this.disableButton()}
-                    price = {this.state.totalPrice}
-                    purchasable ={this.state.purchasable}
-                    ordered = {this.purchaseHandler}
-                />
+                    <Burger ingredients={this.state.ingredients} />
+                    <BuildControls 
+                        ingredientAdded= {this.addIngredientHandler}
+                        ingredientRemoved ={this.removeIngredientHandler}
+                        disabled={this.disableButton()}
+                        price = {this.state.totalPrice}
+                        purchasable ={this.state.purchasable}
+                        ordered = {this.purchaseHandler}
+                    /> 
             </div>
-            // </Aux>
+        // </Aux>
         );
     }
 }

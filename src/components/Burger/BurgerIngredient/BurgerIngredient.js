@@ -24,7 +24,7 @@ class BurgerIngredient extends Component {
             return (
                 ingredient = (
 
-                    <div className={classes.Salad}>salad</div>
+                    <div className={classes.Salad}></div>
                      )
                 )
             }
@@ -33,7 +33,7 @@ class BurgerIngredient extends Component {
             return (
                 ingredient = (
     
-                    <div className={classes.Meat}>meat</div>
+                    <div className={classes.Meat}></div>
                         )
                     )
                 }
@@ -42,7 +42,7 @@ class BurgerIngredient extends Component {
             return (
                 ingredient = (
                     
-                    <div className={classes.Cheese}>cheese</div>
+                    <div className={classes.Cheese}></div>
                         )
                     )
                 }
@@ -50,7 +50,7 @@ class BurgerIngredient extends Component {
             return (
                 ingredient = (
                     
-                    <div className={classes.Bacon}>bacon</div>
+                    <div className={classes.Bacon}></div>
                             )
                         )
                     }
