@@ -7,7 +7,7 @@ class Checkout extends Component {
         super(props) 
         this.state = { 
             ingredients :{
-            salad: 1,
+            salad: 2,
             meat: 1,
             cheese: 1,
             bacon: 1,

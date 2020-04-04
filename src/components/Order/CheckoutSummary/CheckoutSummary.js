@@ -7,15 +7,16 @@ const checkoutSummary =(props)=>{
 
     return (
         <div className={classes.CheckoutSummary}>
-            <h1>Thanks for ordering!</h1>
-            <div style = {{width:"300px", height: "300px", margin: "auto"}}>
+            <h1 className ={classes.Text}>Thanks for ordering!</h1>
+            <div>
                 <Burger ingredients={props.ingredients}/>
-
             </div>
-            <Button btnType = 'Danger'
-            clicked>Cancel</Button>
-            <Button btnType = 'Success'
-            clicked>Continue</Button>
+            <div className ={classes.Text}>
+                <Button  btnType = 'Danger'
+                clicked>Cancel</Button>
+                <Button  btnType = 'Success'
+                clicked>Continue</Button>
+            </div>
 
         </div>
     )
