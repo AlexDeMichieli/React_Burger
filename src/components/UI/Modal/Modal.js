@@ -17,7 +17,7 @@ const modal = (props) => {
             opacity: props.show ? '1' : '0'}}
             >
             {props.children}
-            <button className = {classes.buttonmodal} onClick = {props.modalClosed}>X</button>
+            <button className = {classes.buttonmodal} onClick = {props.modalClosed}>Close</button>
         </div>
 
     )

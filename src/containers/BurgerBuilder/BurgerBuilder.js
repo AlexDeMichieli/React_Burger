@@ -47,7 +47,6 @@ class BurgerBuilder extends Component {
             } 
             else {
                 keys = Object.entries(res.data)
-                console.log(keys)
                 this.setState({ingredients: keys[(keys.length)-1][1].ingredients})
             }
 
@@ -165,6 +164,7 @@ class BurgerBuilder extends Component {
                 <Modal show={this.state.purchasing} modalClosed ={this.purchaseCancelHandler}>
                 {!this.state.loading ? <OrderSummary 
                     ingredients = {this.state.ingredients}
+                    price = {this.state.totalPrice}
                     purchaseCanceled ={this.purchaseCancelHandler}
                     purchaseContinued = {this.purchaseContinueHandler}
                 /> : <Spinner></Spinner>}

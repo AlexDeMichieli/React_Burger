@@ -5,8 +5,7 @@ import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const burger = ( props ) => {
 
-        
-        let values = Object.values(props.ingredients)
+ let values = Object.values(props.ingredients)
         let keys = Object.keys(props.ingredients)
         let ingList = []
         let i = 0
