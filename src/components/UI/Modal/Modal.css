@@ -1,8 +1,9 @@
 .Modal {
     position: fixed;
     z-index: 500;
-    background-color: white;
+    background-color: #F25E74;
     width: 70%;
+    color:white;
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px black;
     padding: 16px;
@@ -16,9 +17,10 @@
     display: block !important;
     margin: auto !important;
     position: absolute !important;
-    top: 10px !important;
-    right: 10px !important;
-    width: 50px;
+    top: 16px !important;
+    right: 15px !important;
+    width: 60px;
+    height: 30px;
     background-color: #F25E74;
     color: white;
 }

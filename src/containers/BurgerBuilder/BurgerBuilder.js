@@ -9,6 +9,8 @@ import Spinner from '../../components/UI/Spinner/Spinner'
 import axios from '../../axios-orders'
 
 
+
+
 const INGREDIENT_PRICES = {
 
     salad: 0.5,
@@ -125,6 +127,9 @@ class BurgerBuilder extends Component {
         return switcher
     }
 
+ 
+
+
     purchaseContinueHandler = () =>{
     //     this.setState({loading: true})
     //     const order ={
@@ -156,19 +161,21 @@ class BurgerBuilder extends Component {
         // for (let number in disableButton){
         //     disableButton[number] = disableButton[number] <=0
         // }
+
         
 
         return (
             // <Aux>
-          
+            
            <div style ={{paddingTop: '50px', display: 'flex', minHeight: '100vh', flexDirection: 'column'}}>
-                <Modal show={this.state.purchasing} modalClosed ={this.purchaseCancelHandler}>
-                {!this.state.loading ? <OrderSummary 
-                    ingredients = {this.state.ingredients}
-                    price = {this.state.totalPrice}
-                    purchaseCanceled ={this.purchaseCancelHandler}
-                    purchaseContinued = {this.purchaseContinueHandler}
-                /> : <Spinner></Spinner>}
+                <Modal backdrop = {this.displayBackdrop} show={this.state.purchasing} modalClosed ={this.purchaseCancelHandler}>
+                        {!this.state.loading ? 
+                            <OrderSummary 
+                            ingredients = {this.state.ingredients}
+                            price = {this.state.totalPrice}
+                            purchaseCanceled ={this.purchaseCancelHandler}
+                            purchaseContinued = {this.purchaseContinueHandler}
+                        /> : <Spinner></Spinner>}
                 </Modal>
                     <div style={{flex: "1", overflow: 'scroll'}}>
                         <Burger ingredients={this.state.ingredients}/>
@@ -184,6 +191,7 @@ class BurgerBuilder extends Component {
                         /> 
                     </div>
             </div>
+
         // </Aux>
         );
     }

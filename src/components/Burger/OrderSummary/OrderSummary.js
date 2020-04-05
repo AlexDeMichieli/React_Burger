@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../../UI/Button/Button'
+import { withTheme } from '@material-ui/styles';
 
 const orderSummary =(props)=> {
 
@@ -15,7 +16,7 @@ const orderSummary =(props)=> {
     return(
 
 
-        <div>
+        <div style ={{backgroundColor: "white", color: 'black', padding: '20px'}}>
             <h3>Your Order</h3>
             <p>A delicours burger with the following ingredients:</p>
             <ul>
