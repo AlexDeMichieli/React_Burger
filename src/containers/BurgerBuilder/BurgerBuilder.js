@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Aux from '../../hoc/Aux';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import Modal from '../../components/UI/Modal/Modal'
@@ -41,18 +40,18 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount(){
-        axios.get('/orders.json').then(res=>{
+        // axios.get('/orders.json').then(res=>{
             
-            let keys = res.data
-            if (keys == null){
-                this.setState(this.state.ingredients)  
-            } 
-            else {
-                keys = Object.entries(res.data)
-                this.setState({ingredients: keys[(keys.length)-1][1].ingredients})
-            }
+        //     let keys = res.data
+        //     if (keys == null){
+        //         this.setState(this.state.ingredients)  
+        //     } 
+        //     else {
+        //         keys = Object.entries(res.data)
+        //         this.setState({ingredients: keys[(keys.length)-1][1].ingredients})
+        //     }
 
-        })
+        // })
         
     }
 

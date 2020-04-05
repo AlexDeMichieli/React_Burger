@@ -50,13 +50,16 @@
 
 .BuildControl .Less {  
     background-color: #D39952;
-    color: white;
+    color: white; 
+    width: 90px ;
+    height: 40px;
     margin: 5px;
 }
-
 .BuildControl .More {
     background-color: #8F5E1E;
     color: white;
+    width: 90px ;
+    height: 40px;
 }
 
 .BuildControl .Less:hover, .BuildControl .Less:active {  
