@@ -145,37 +145,19 @@ class BurgerBuilder extends Component {
 
 
     purchaseContinueHandler = () =>{
-    //     this.setState({loading: true})
-    //     const order ={
-    //         ingredients : this.state.ingredients,
-    //         price: this.state.totalPrice,
-    //         customer : {
-    //             name: 'Alex',
-    //             address : {
-    //                 state: 'Portland',
-    //                 zipcode: '123'
-    //             },
-    //             email : 'myemail'
-    //     } 
-    // }
-    //     axios.post('/orders.json', order) //json is only for firebase
-    //     .then(res => {
-    //         this.setState({loading:false, purchasing: false})
-    //         console.log(res)
-    //     })
-    //     .catch(err => {
-    //         this.setState({loading:false, purchasing: false})
-    //     })
-    
+   
             //we are passing the ingredients via search params as well as state. With State is easier
             const queryParams = [];
             for (let ingredients in this.state.ingredients)
                 queryParams.push(encodeURI(ingredients)+ '=' + encodeURIComponent(this.state.ingredients[ingredients]))
+            
+            //pushing the total price as well
+            queryParams.push('price=' + this.state.totalPrice)
             const queryString = queryParams.join('&')
             this.props.history.push({
                 pathname: '/checkout',
                 search: '?' + queryString,
-                state: this.state.ingredients
+                state: this.state.ingredients //add totalprice
             })
     }
 
