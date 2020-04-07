@@ -42,7 +42,7 @@ const App  = () => {
                 <MenuIcon />
             </IconButton>
             <div className={classes.title}>
-              <Button className ={classes.menuButton} color="inherit" label="Home" exact to="/" component={Link}>Home</Button>
+              <Button className ={classes.menuButton} color="inherit" label="Home" to="/" component={Link}>Home</Button>
               <Button color="inherit" label="Checkout" to="/checkout" component={Link}>Checkout</Button>
             </div>
               <Button color="inherit">Login</Button>

@@ -1,9 +1,10 @@
 import React from 'react';
 import classes from './Burger.css';
+// import {withRouter} from 'react-router-dom'
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const burger = ( props ) => {
-
+    // console.log(props)
  let values = Object.values(props.ingredients)
         let keys = Object.keys(props.ingredients)
         let ingList = []
@@ -67,4 +68,5 @@ const burger = ( props ) => {
     );
 };
 
-export default burger;
+// export default withRouter( burger);
+export default  burger;

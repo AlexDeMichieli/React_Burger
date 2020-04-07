@@ -6,7 +6,13 @@ import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 import Spinner from '../../components/UI/Spinner/Spinner'
 import axios from '../../axios-orders'
-
+import {withRouter} from 'react-router-dom'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 
 
@@ -40,6 +46,17 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount(){
+
+        // let location = this.props.history;
+        // this.props.history.push({
+        //     pathname: '/checkout',
+        //     state: this.state.ingredients,
+        // })
+        // // location.push({state: this.state.ingredients})
+        // console.log('Home',location)
+
+
+        
         // axios.get('/orders.json').then(res=>{
             
         //     let keys = res.data
@@ -52,6 +69,7 @@ class BurgerBuilder extends Component {
         //     }
 
         // })
+        
         
     }
 
@@ -77,7 +95,8 @@ class BurgerBuilder extends Component {
         const oldCount = this.state.ingredients[type]
         const updatedCount = oldCount + 1
         const updatedIngredients = Object.assign({}, this.state.ingredients)
-        updatedIngredients[type] = updatedCount
+              
+              updatedIngredients[type] = updatedCount
 
         //takes care of total price
 
@@ -85,8 +104,6 @@ class BurgerBuilder extends Component {
         const oldPrice = this.state.totalPrice;
         const newPrice = oldPrice + priceAddition;
         this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
-        console.log(this.state.purchasable, this.state.ingredients)
-
         this.updatePurchaseState(updatedIngredients)
 
     }
@@ -104,8 +121,6 @@ class BurgerBuilder extends Component {
         const oldPrice = this.state.totalPrice;
         const newPrice = oldPrice - priceDeduction;
         this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
-        console.log(this.state.purchasable,  this.state.ingredients)
-
         this.updatePurchaseState(updatedIngredients)
     }
 
@@ -151,7 +166,17 @@ class BurgerBuilder extends Component {
     //     .catch(err => {
     //         this.setState({loading:false, purchasing: false})
     //     })
-    this.props.history.push('/checkout')
+    
+            //we are passing the ingredients via search params as well as state. With State is easier
+            const queryParams = [];
+            for (let ingredients in this.state.ingredients)
+                queryParams.push(encodeURI(ingredients)+ '=' + encodeURIComponent(this.state.ingredients[ingredients]))
+            const queryString = queryParams.join('&')
+            this.props.history.push({
+                pathname: '/checkout',
+                search: '?' + queryString,
+                state: this.state.ingredients
+            })
     }
 
     render () {
@@ -170,11 +195,11 @@ class BurgerBuilder extends Component {
                 <Modal backdrop = {this.displayBackdrop} show={this.state.purchasing} modalClosed ={this.purchaseCancelHandler}>
                         {!this.state.loading ? 
                             <OrderSummary 
-                            ingredients = {this.state.ingredients}
-                            price = {this.state.totalPrice}
-                            purchaseCanceled ={this.purchaseCancelHandler}
-                            purchaseContinued = {this.purchaseContinueHandler}
-                        /> : <Spinner></Spinner>}
+                                ingredients = {this.state.ingredients}
+                                price = {this.state.totalPrice}
+                                purchaseCanceled ={this.purchaseCancelHandler}
+                                purchaseContinued = {this.purchaseContinueHandler}
+                            /> : <Spinner></Spinner>}
                 </Modal>
                     <div style={{flex: "1", overflow: 'scroll'}}>
                         <Burger ingredients={this.state.ingredients}/>
