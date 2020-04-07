@@ -21,12 +21,13 @@ class Checkout extends Component {
             meat: 1,
             cheese: 1,
             bacon: 1,
-            }
+            },
+            totalPrice: ''
          }
         
     }
     componentDidMount(){
-            console.log(this.props)
+            console.log('From Checkout',this.props)
             const query = new URLSearchParams(this.props.location.search)
             const ingredients = {}
             const arrayFromMap = []
