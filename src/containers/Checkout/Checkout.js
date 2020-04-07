@@ -42,10 +42,10 @@ class Checkout extends Component {
                     
                 ingredients[param[0]] = +param[1];
             }
-                //slow solution
-            // for (let key in arrayFromMap)
-            //     objectWithIngredients[arrayFromMap[key][0]] = +arrayFromMap[key][1]
-            // console.log(objectWithIngredients)
+                slow solution
+            for (let key in arrayFromMap)
+                objectWithIngredients[arrayFromMap[key][0]] = +arrayFromMap[key][1]
+            console.log(objectWithIngredients)
 
             this.setState({ingredients: ingredients})
 
