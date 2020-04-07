@@ -183,7 +183,8 @@ class BurgerBuilder extends Component {
                                 purchaseContinued = {this.purchaseContinueHandler}
                             /> : <Spinner></Spinner>}
                 </Modal>
-                    <div style={{flex: "1", overflow: 'scroll'}}>
+                    {/* <div style={{flex: "1", overflow: 'scroll'}}> */}
+                        <div style={{flex: "1"}}>
                         <Burger ingredients={this.state.ingredients}/>
                     </div>
                     <div>
