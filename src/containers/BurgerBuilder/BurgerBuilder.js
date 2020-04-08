@@ -154,10 +154,13 @@ class BurgerBuilder extends Component {
             //pushing the total price as well
             queryParams.push('price=' + this.state.totalPrice)
             const queryString = queryParams.join('&')
+            
+            let newIngredients = Object.assign({}, this.state.ingredients)
+            let newPrice = Object.assign({}, this.state)
             this.props.history.push({
                 pathname: '/checkout',
                 search: '?' + queryString,
-                state: {ingredients: this.state.ingredients, price: this.state.totalPrice}
+                state: {ingredients: newIngredients, price: newPrice.totalPrice}
             })
     }
 

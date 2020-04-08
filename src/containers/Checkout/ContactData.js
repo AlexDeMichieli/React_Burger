@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import axios from '../../axios-orders'
+import Spinner from '../../components/UI/Spinner/Spinner'
 
 
 
@@ -19,47 +20,51 @@ const useStyles = makeStyles(theme => ({
 
 
 const ContactData  = (props) => {
-
     const classes = useStyles();
-    // const [loading, setLoading] = useState(false)
-    // const [list, setList] = useState({  
-    //         name: '',
-    //         email: '',
-    //         address: {
-    //             street: '',
-    //             postalCode: '',
-    //         }
-    //     })
+    const [loading, setLoading] = useState(false)
+    const [list, setList] = useState({  
+            name: '',
+            email: '',
+            address: {
+                street: '',
+                postalCode: '',
+            }
+        })
+    const [purchasing, setPurchasing] = useState(false)
 
 
     const orderHandler = (event) =>{
         event.preventDefault();
-    //     this.setState({loading: true})
-    //     const order ={
-    //         ingredients : props.ingredients,
-    //         price: props.totalPrice,
-    //         customer : {
-    //             name: 'Alex',
-    //             address : {
-    //                 state: 'Portland',
-    //                 zipcode: '123'
-    //             },
-    //             email : 'myemail'
-    //     } 
-    // }
-    //     axios.post('/orders.json', order) //json is only for firebase
-    //     .then(res => {
-    //         this.setState({loading:false, purchasing: false})
-    //         console.log(res)
-    //     })
-    //     .catch(err => {
-    //         this.setState({loading:false, purchasing: false})
-    //     })
-    
+        setLoading(true)
+        const order ={
+            ingredients : props.ingredients,
+            price: props.price,
+            customer : {
+                name: 'Alex',
+                address : {
+                    state: 'Portland',
+                    zipcode: '123'
+                },
+                email : 'myemail'
+            }    
+        }
+        console.log(order)
+        axios.post('/orders.json', order) //json is only for firebase
+             .then(res => {
+               setLoading(true)
+               setPurchasing(true)
+               console.log(res)
+          })
+             .catch(err => {
+                setLoading(false)
+                setPurchasing(false)
+          })
     }
 
         return ( 
             <div>
+            {/* {loading ? <Spinner : <div></div> } */}
+
              <Container fixed>
                 <h4>Enter your Info</h4>
 
@@ -75,7 +80,7 @@ const ContactData  = (props) => {
                     >Send</Button>
                 </form>
             </Container>
-            </div>
+            </div> 
         );
     }
  
