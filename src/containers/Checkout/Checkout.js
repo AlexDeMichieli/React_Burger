@@ -48,10 +48,12 @@ class Checkout extends Component {
                     ingredients[param[0]] = +param[1];
                 }
             }
+
             //     slow solution
             // for (let key in arrayFromMap)
             //     objectWithIngredients[arrayFromMap[key][0]] = +arrayFromMap[key][1]
             // console.log(objectWithIngredients)
+
 
             //can save state from location.state instead of queryParams. It's easier
             this.setState({ingredients: ingredients, totalPrice: price})
