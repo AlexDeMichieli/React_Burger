@@ -27,28 +27,36 @@ class Checkout extends Component {
         
     }
     componentDidMount(){
-            console.log('From Checkout',this.props)
+            //gets props from burgerbuilder history ==> console.log('From Checkout',this.props, this.props.location.state.ingredients, this.props.location.state.price)
+            //getting props from history is better than queryparams. Less work
+            
             const query = new URLSearchParams(this.props.location.search)
             const ingredients = {}
-            const arrayFromMap = []
-            const objectWithIngredients = {}
-            const mappedIngredients = new Map()
+            let price = 0;
+            // const arrayFromMap = []
+            // const objectWithIngredients = {}
+            // const mappedIngredients = new Map()
             for (let param of query.entries()) {
                 //slow solution
                 // let key = param[0]
                 // let value = param[1]
                 //     mappedIngredients.set(key, +value)
                     // arrayFromMap.push([key, +value])
-                    
-                ingredients[param[0]] = +param[1];
+                if (param[0]==='price'){
+                    price = param[1]
+                }else {
+                    ingredients[param[0]] = +param[1];
+                }
             }
+
             //     slow solution
             // for (let key in arrayFromMap)
             //     objectWithIngredients[arrayFromMap[key][0]] = +arrayFromMap[key][1]
             // console.log(objectWithIngredients)
 
-            this.setState({ingredients: ingredients})
 
+            //can save state from location.state instead of queryParams. It's easier
+            this.setState({ingredients: ingredients, totalPrice: price})
     }
 
 
@@ -69,7 +77,7 @@ class Checkout extends Component {
                     checkoutCancelled={this.checkoutCancelledHandler}
                     checkoutContinued={this.checkoutContinuedHandler}
                     />
-                    <Route path ={this.props.match.path + '/contact-data'}  render = {()=> (<ContactData ingredients ={this.state.ingredients}/>)} />
+                    <Route path ={this.props.match.path + '/contact-data'}  render = {()=> (<ContactData ingredients ={this.state.ingredients} price = {this.state.totalPrice}/>)} />
                 </div>
          );
     }
