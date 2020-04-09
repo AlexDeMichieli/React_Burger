@@ -63,7 +63,6 @@ const ContactData  = (props) => {
                 setLoading(true)
                 setPurchasing(true)
           })  
-            // props.history.push('/')
     }
 
         return ( 
