@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import axios from '../../axios-orders'
 import Spinner from '../../components/UI/Spinner/Spinner'
+import {withRouter} from 'react-router-dom'
+
 
 
 
@@ -51,19 +53,22 @@ const ContactData  = (props) => {
         console.log(order)
         axios.post('/orders.json', order) //json is only for firebase
              .then(res => {
-               setLoading(true)
-               setPurchasing(true)
+               setLoading(false)
+               setPurchasing(false)
                console.log(res)
+               props.history.push('/')
+
           })
              .catch(err => {
-                setLoading(false)
-                setPurchasing(false)
-          })
+                setLoading(true)
+                setPurchasing(true)
+          })  
+            // props.history.push('/')
     }
 
         return ( 
             <div>
-            {/* {loading ? <Spinner : <div></div> } */}
+            {!loading ?(
 
              <Container fixed>
                 <h4>Enter your Info</h4>
@@ -79,9 +84,10 @@ const ContactData  = (props) => {
                          onClick ={orderHandler}
                     >Send</Button>
                 </form>
-            </Container>
+            </Container> ) : <Spinner/> }
             </div> 
         );
     }
  
-export default ContactData;
+export default withRouter(ContactData);
+//wrapping this with to allow history, since it's a subcomponent in the checkout page, doesn't have history

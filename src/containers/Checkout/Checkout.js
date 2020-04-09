@@ -27,8 +27,8 @@ class Checkout extends Component {
         
     }
     componentDidMount(){
-            // get props from burgerbuilder history ==> console.log('From Checkout',this.props, this.props.location.state.ingredients, this.props.location.state.price)
-            //getting props from history is better than queryparams
+            //gets props from burgerbuilder history ==> console.log('From Checkout',this.props, this.props.location.state.ingredients, this.props.location.state.price)
+            //getting props from history is better than queryparams. Less work
             
             const query = new URLSearchParams(this.props.location.search)
             const ingredients = {}
@@ -53,6 +53,7 @@ class Checkout extends Component {
             //     objectWithIngredients[arrayFromMap[key][0]] = +arrayFromMap[key][1]
             // console.log(objectWithIngredients)
 
+            //can save state from location.state instead of queryParams. It's easier
             this.setState({ingredients: ingredients, totalPrice: price})
     }
 
