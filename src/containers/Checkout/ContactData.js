@@ -24,6 +24,7 @@ const useStyles = makeStyles(theme => ({
 
 
 const ContactData  = (props) => {
+    console.log('from contact form',props)
     const classes = useStyles();
     const [loading, setLoading] = useState(false)
     const [list, setList] = useState({  
