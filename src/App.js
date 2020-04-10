@@ -1,7 +1,7 @@
 import React from 'react';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 import Checkout from './containers/Checkout/Checkout'
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, withRouter } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -28,20 +28,18 @@ const useStyles = makeStyles((theme) => ({
 
 
 const App  = (props) => {
-  console.log(props)
+
   const classes = useStyles();
 
     return (
       
       <div className={classes.root}>
-        <Route
-          path="/"
-          render={({ location }) => (
+    
             <div>
               <AppBar position="static">
                 <Toolbar style = {{backgroundColor: "#A1C9F1", height: '90px'}}>
-                  <Tabs value={location.pathname}>
-                    <Tab label={"home"} value="/" component={Link} to={'/'} />
+                  <Tabs value={props.history.location.pathname}>
+                    <Tab label="home" value="/" component={Link} to={'/'} />
                     <Tab label="checkout" value="/checkout" component={Link} to={"/checkout"} />
                     <Tab
                       value="/orders"
@@ -58,11 +56,9 @@ const App  = (props) => {
                   <Route path ='/orders' component={Orders}/>
             </Switch>
             </div>
-          )}
-        />
       </div>
 
     );
   }
 
-export default App;
+export default withRouter(App);
