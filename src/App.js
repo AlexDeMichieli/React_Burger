@@ -27,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const App  = (props) => {
-
+const App  = ({location}) => {
+  
   const classes = useStyles();
 
     return (
@@ -38,7 +38,7 @@ const App  = (props) => {
             <div>
               <AppBar position="static">
                 <Toolbar style = {{backgroundColor: "#A1C9F1", height: '90px'}}>
-                  <Tabs value={props.history.location.pathname}>
+                  <Tabs value={location.pathname}>
                     <Tab label="home" value="/" component={Link} to={'/'} />
                     <Tab label="checkout" value="/checkout" component={Link} to={"/checkout"} />
                     <Tab
