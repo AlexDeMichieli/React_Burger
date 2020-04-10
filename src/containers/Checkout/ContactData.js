@@ -5,8 +5,6 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import axios from '../../axios-orders'
 import Spinner from '../../components/UI/Spinner/Spinner'
-import Typography from '@material-ui/core/Typography';
-
 import {withRouter} from 'react-router-dom'
 
 
@@ -24,7 +22,6 @@ const useStyles = makeStyles(theme => ({
 
 
 const ContactData  = (props) => {
-    console.log('from contact form',props)
     const classes = useStyles();
     const [loading, setLoading] = useState(false)
     const [list, setList] = useState({  

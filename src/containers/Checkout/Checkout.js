@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+import {Route} from "react-router-dom";
 import {withRouter} from 'react-router-dom'
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary'
-import axios from '../../axios-orders'
 import ContactData from './ContactData'
 
 
@@ -28,7 +22,6 @@ class Checkout extends Component {
         
     }
     componentDidMount(){
-        console.log('from checkout',this.props)
             //gets props from burgerbuilder history ==> console.log('From Checkout',this.props, this.props.location.state.ingredients, this.props.location.state.price)
             //getting props from history is better than queryparams. Less work
             

@@ -19,9 +19,9 @@ const Order = (props) => {
 
     return(
         <Container maxWidth="sm" >
-            <Paper elevation={2} className = {[classes.root, classes.margin]}>
-            <p>Ingredients: Salad(1)</p>
-            <p>Price : <strong>USD 4.5</strong></p>
+            <Paper elevation={2} className = {[classes.root, classes.margin].join(" ")}>
+              <p>Ingredients: Salad(1)</p>
+              <p>Price : <strong>USD 4.5</strong></p>
             </Paper>
         </Container>
     )
