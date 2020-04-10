@@ -10,7 +10,6 @@ const buildControl = (props) => {
         <div className ={classes.BuildControl}>
             <div className ={classes.Label}>
                 {props.label}
-        
                 <Button variant="contained" className ={classes.Less} onClick={props.removed}>Less</Button>
                 <Button variant="contained" className ={classes.More} onClick={props.added}>More</Button>
           
