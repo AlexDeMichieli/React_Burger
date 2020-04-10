@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+import {Route} from "react-router-dom";
+import {withRouter} from 'react-router-dom'
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary'
-import axios from '../../axios-orders'
 import ContactData from './ContactData'
 
 
@@ -76,11 +71,11 @@ class Checkout extends Component {
                     ingredients = {this.state.ingredients}
                     checkoutCancelled={this.checkoutCancelledHandler}
                     checkoutContinued={this.checkoutContinuedHandler}
-                    />
+                    />                                                                
                     <Route path ={this.props.match.path + '/contact-data'}  render = {()=> (<ContactData ingredients ={this.state.ingredients} price = {this.state.totalPrice}/>)} />
-                </div>
+                </div>                                                    //you ca pass props inside brackets and pass props = {...props} in the component instead of withrouter
          );
     }
 }
  
-export default Checkout;
+export default withRouter(Checkout);

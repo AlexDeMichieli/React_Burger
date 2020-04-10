@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
-
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 import Spinner from '../../components/UI/Spinner/Spinner'
-import axios from '../../axios-orders'
-import {withRouter} from 'react-router-dom'
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
 
 
 
@@ -45,33 +36,6 @@ class BurgerBuilder extends Component {
         loading: false,
     }
 
-    componentDidMount(){
-
-        // let location = this.props.history;
-        // this.props.history.push({
-        //     pathname: '/checkout',
-        //     state: this.state.ingredients,
-        // })
-        // // location.push({state: this.state.ingredients})
-        // console.log('Home',location)
-
-
-        
-        // axios.get('/orders.json').then(res=>{
-            
-        //     let keys = res.data
-        //     if (keys == null){
-        //         this.setState(this.state.ingredients)  
-        //     } 
-        //     else {
-        //         keys = Object.entries(res.data)
-        //         this.setState({ingredients: keys[(keys.length)-1][1].ingredients})
-        //     }
-
-        // })
-        
-        
-    }
 
     updatePurchaseState(ingredients){
 
@@ -174,8 +138,7 @@ class BurgerBuilder extends Component {
         
 
         return (
-            // <Aux>
-            
+
            <div style ={{paddingTop: '50px', display: 'flex', minHeight: '100vh', flexDirection: 'column'}}>
                 <Modal backdrop = {this.displayBackdrop} show={this.state.purchasing} modalClosed ={this.purchaseCancelHandler}>
                         {!this.state.loading ? 
@@ -201,8 +164,6 @@ class BurgerBuilder extends Component {
                         /> 
                     </div>
             </div>
-
-        // </Aux>
         );
     }
 }
