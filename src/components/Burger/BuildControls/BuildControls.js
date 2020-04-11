@@ -1,11 +1,12 @@
 import React from 'react';
-import classes from './BuildControls.css'
+import styles from './BuildControls.css'
 import BuildControl from './BuildControl/BuildControl'
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 
 
 const useStyles = makeStyles({
@@ -25,14 +26,20 @@ const useStyles = makeStyles({
         margin: "auto",
         padding: "10px 0px",
         marginTop: "20xpx"
-    }
-        // justify-content: center;
-        // align-items: center;
-        // text-align: center;
-        // box-shadow: 13px 15px 7px -5px rgba(0,0,0,0.08);;
-        // margin: auto;
-        // padding: 10px 0px;
-        // margin-top: 20px;
+    },
+    OrderButton : {
+
+      backgroundColor: "#DED29E",
+      outline: "none",
+      cursor: "pointer",
+      border: "1px solid #966909",
+      color: "white",
+      fontFamily: 'inherit',
+      fontSize: "1.2em",
+      marginLeft: '20px',
+      padding: "15px 30px",
+      boxShadow: "2px 2px 2px #966909",
+    },
   });
 
 
@@ -77,10 +84,10 @@ const buildControls =(props) => {
 
     return (
 
-        <div>
+        <Container style={{textAlign: 'center'}}>
         {['bottom'].map((anchor) => (
         <React.Fragment key={anchor}>
-            <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+            <Button onClick={toggleDrawer(anchor, true)}>Select Ingredients</Button>
             <Drawer  
                 BackdropProps={{ invisible: true }}
                 anchor={anchor} open={state[anchor]} 
@@ -99,7 +106,7 @@ const buildControls =(props) => {
             />
             )}
                 <button 
-                    className ={classes.OrderButton} 
+                    className={[classes.OrderButton, styles.OrderButton].join(" ")} 
                     disabled={!props.purchasable}
                     onClick ={props.ordered}>
                     Order Now
@@ -109,7 +116,7 @@ const buildControls =(props) => {
         </React.Fragment>
             ))}
 
-        </div>
+        </Container>
     )
 }
 
