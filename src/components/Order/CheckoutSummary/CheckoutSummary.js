@@ -2,12 +2,26 @@ import React from 'react';
 import Burger from '../../Burger/Burger'
 import Button from '../../UI/Button/Button'
 import classes from './CheckoutSummary.css'
+import {withRouter} from 'react-router-dom'
+
 
 const checkoutSummary =(props)=>{
 
+
+    console.log('from summary', props.location.state )
+
+    let checkoutMessage = ''
+    if (props.location.state === undefined){
+        checkoutMessage = (<h1 className ={classes.Text} >Please Add Ingredients!</h1>)
+    }
+    else {
+        checkoutMessage = (<h1 className ={classes.Text} > Ready to Pay?</h1>)
+    }
+    
     return (
         <div className={classes.CheckoutSummary}>
-            <h1 className ={classes.Text}>Thanks for ordering!</h1>
+            {/* <h1 className ={classes.Text}>Ready to pay?</h1> */}
+            {checkoutMessage}
             <div>
                 <Burger ingredients={props.ingredients}/>
             </div>
@@ -24,4 +38,4 @@ const checkoutSummary =(props)=>{
     )
 
 }
-export default checkoutSummary
+export default withRouter(checkoutSummary)
