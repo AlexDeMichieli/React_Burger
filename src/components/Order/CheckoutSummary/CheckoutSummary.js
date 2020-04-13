@@ -20,7 +20,6 @@ const checkoutSummary =(props)=>{
     
     return (
         <div className={classes.CheckoutSummary}>
-            {/* <h1 className ={classes.Text}>Ready to pay?</h1> */}
             {checkoutMessage}
             <div>
                 <Burger ingredients={props.ingredients}/>

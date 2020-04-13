@@ -13,16 +13,17 @@ const useStyles = makeStyles((theme) => ({
   
 const modal = (props) => {
 
+  console.log('props from modal', props)
+
   const background = useStyles();
   const [open, setOpen] = React.useState(true);
-
 
 
     return (
 
         <div 
             className ={classes.Modal}
-            style ={{ tranform: props.show ? 'translateY(0)' : "translateY(-100vh)",
+            style ={{ tranform: props.show ? 'translateY(10)' : "translateY(-100vh)",
             opacity: props.show ? '1' : '0'}}
             >
             {props.children}

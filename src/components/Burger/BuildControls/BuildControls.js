@@ -55,18 +55,27 @@ const controls = [
 
 const buildControls =(props) => {
 
+  console.log('from buildCcontrol',props.show)
+  //if props.show drawer should be set to false
   const classes = useStyles();
   const [state, setState] = React.useState({
     bottom: false,
   });
+ 
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
+      return;  
     }
 
     setState({ ...state, [anchor]: open });
+  
   };
+
+  const closeDrawer = (anchor, open) => (event) => {
+    setState({ ...state, [anchor]: open });
+    props.ordered()
+  }
 
   const list = (anchor) => (
     <div
@@ -77,7 +86,6 @@ const buildControls =(props) => {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-    
     </div>
   );
 
@@ -86,36 +94,36 @@ const buildControls =(props) => {
 
         <Container style={{textAlign: 'center'}}>
         {['bottom'].map((anchor) => (
-        <React.Fragment key={anchor}>
-            <Button onClick={toggleDrawer(anchor, true)}>Select Ingredients</Button>
-            <Drawer  
-                BackdropProps={{ invisible: true }}
-                anchor={anchor} open={state[anchor]} 
-                onClose={toggleDrawer(anchor, false)}
-                style= {{display: "flex"}}
-            >
-            <div className={classes.BuildControls}>
-            <Typography variant="h4">$<strong>{props.price}</strong></Typography>
-                {controls.map(ctrl =>
-                <BuildControl 
-                    added ={() => props.ingredientAdded(ctrl.type)}
-                    removed ={() => props.ingredientRemoved(ctrl.type)}
-                    disabled ={props.disabled[ctrl.type]}
-                    key = {ctrl.label} 
-                    label={ctrl.label}
-            />
-            )}
-                <button 
-                    className={[classes.OrderButton, styles.OrderButton].join(" ")} 
-                    disabled={!props.purchasable}
-                    onClick ={props.ordered}>
-                    Order Now
-                </button>
-              </div>
-            </Drawer>
-        </React.Fragment>
+          <React.Fragment key={anchor}>
+              <Button onClick={toggleDrawer(anchor, true)}>Select Ingredients</Button>
+              <Drawer  
+                  BackdropProps={{ invisible: true }}
+                  anchor={anchor} open={state[anchor]} 
+                  onClose={toggleDrawer(anchor, false)}
+                  style= {{display: "flex"}}
+              >
+              
+              <div className={classes.BuildControls}>
+              <Typography variant="h4">$<strong>{props.price}</strong></Typography>
+                  {controls.map(ctrl =>
+                    <BuildControl 
+                        added ={() => props.ingredientAdded(ctrl.type)}
+                        removed ={() => props.ingredientRemoved(ctrl.type)}
+                        disabled ={props.disabled[ctrl.type]}
+                        key = {ctrl.label} 
+                        label={ctrl.label}
+                      />
+                  )}
+                  <button 
+                      className={[classes.OrderButton, styles.OrderButton].join(" ")} 
+                      disabled={!props.purchasable}
+                      // onClick ={props.ordered}
+                      onClick ={closeDrawer(anchor, false)}
+                  >Order Now</button>
+                </div>
+              </Drawer>
+          </React.Fragment>
             ))}
-
         </Container>
     )
 }
