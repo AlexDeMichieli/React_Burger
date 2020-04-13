@@ -14,18 +14,10 @@
     margin-top: 20px;
 }
 
-
-.OrderButton {
-    background-color: #DED29E;
-    outline: none;
-    cursor: pointer;
-    border: 1px solid #966909;
-    color: white;
-    font-family: inherit;
-    font-size: 1.2em;
-    padding: 15px 30px;
-    box-shadow: 2px 2px 2px #966909;
+.MuiDrawer-modal{
+   display: null !important;
 }
+
 
 .OrderButton:hover, .OrderButton:active {
     background-color: #A29574;

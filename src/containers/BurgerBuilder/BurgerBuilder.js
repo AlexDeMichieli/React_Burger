@@ -105,8 +105,6 @@ class BurgerBuilder extends Component {
         return switcher
     }
 
- 
-
 
     purchaseContinueHandler = () =>{
    
@@ -130,13 +128,6 @@ class BurgerBuilder extends Component {
 
     render () {
 
-        // const disableButton = Object.assign({}, this.state.ingredients)
-        // for (let number in disableButton){
-        //     disableButton[number] = disableButton[number] <=0
-        // }
-
-        
-
         return (
 
            <div style ={{paddingTop: '50px', display: 'flex', minHeight: '100vh', flexDirection: 'column'}}>
@@ -149,12 +140,12 @@ class BurgerBuilder extends Component {
                                 purchaseContinued = {this.purchaseContinueHandler}
                             /> : <Spinner></Spinner>}
                 </Modal>
-                    {/* <div style={{flex: "1", overflow: 'scroll'}}> */}
                         <div style={{flex: "1"}}>
                         <Burger ingredients={this.state.ingredients}/>
                     </div>
                     <div>
                         <BuildControls 
+                            show = {this.state.purchasing} 
                             ingredientAdded= {this.addIngredientHandler}
                             ingredientRemoved ={this.removeIngredientHandler}
                             disabled={this.disableButton()}
