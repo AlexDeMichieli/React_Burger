@@ -1,9 +1,25 @@
 import React from 'react';
 import Button from '../../UI/Button/Button'
-import { withTheme } from '@material-ui/styles';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    spacing: [0, 4, 8, 16, 32, 64],
+  });
+
+const useStyles = makeStyles({
+    font: {
+        fontFamily: 'Fredoka One'
+    },
+    spacing: {
+        margin: theme.spacing(4),
+    }
+  });
 
 const orderSummary =(props)=> {
 
+    const classes = useStyles();
 
     const ingredientSummary = Object.keys(props.ingredients).map(igKey => {
         return (
@@ -17,8 +33,8 @@ const orderSummary =(props)=> {
 
 
         <div style ={{backgroundColor: "white", color: 'black', padding: '20px'}}>
-            <h3>Your Order</h3>
-            <p>A delicours burger with the following ingredients:</p>
+            <Typography className ={[classes.font, classes.spacing].join(" ")} variant="h4" align="center">Your Order</Typography>
+            <Typography className ={classes.font} variant="h6">Ingredients:</Typography>
             <ul>
                 {ingredientSummary}
             </ul>
