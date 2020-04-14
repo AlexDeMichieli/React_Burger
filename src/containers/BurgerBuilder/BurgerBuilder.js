@@ -141,8 +141,8 @@ class BurgerBuilder extends Component {
                             /> : <Spinner></Spinner>}
                 </Modal>
                         <div style={{flex: "1"}}>
-                        <Burger ingredients={this.state.ingredients}/>
-                    </div>
+                             <Burger ingredients={this.state.ingredients}/>
+                        </div>
                     <div>
                         <BuildControls 
                             show = {this.state.purchasing} 

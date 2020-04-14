@@ -59,7 +59,7 @@ const burger = ( props ) => {
     //     transformedIngredients = <p>Please start adding ingredients!</p>;
     // }
     return (
-        <div className={classes.Burger} style = {{border: '3px solid green', overflow: 'scroll', }}>
+        <div className={classes.Burger}>
             <BurgerIngredient type="bread-top" />
             {/* {transformedIngredients} */}
             {ingredientsList}

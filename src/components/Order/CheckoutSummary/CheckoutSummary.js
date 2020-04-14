@@ -21,16 +21,16 @@ const checkoutSummary =(props)=>{
     return (
         <div className={classes.CheckoutSummary}>
             {checkoutMessage}
-            <div>
+           
                 <Burger ingredients={props.ingredients}/>
-            </div>
-            <div className ={classes.Text}>
+            
+            <div className ={classes.Text} style ={{backgroundColor: "red"}}>
                 <Button  btnType = 'Danger'
                     clicked ={props.checkoutCancelled}>Cancel
-                    </Button>
+                </Button>
                 <Button  btnType = 'Success'
                     clicked={props.checkoutContinued}>Continue
-                    </Button>
+                </Button>
             </div>
 
         </div>

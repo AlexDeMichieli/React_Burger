@@ -61,13 +61,15 @@ class Checkout extends Component {
 
        
         return ( 
-                <div>
+                <div style = {{backgroundColor: 'antiquewhite'}}>
                     <CheckoutSummary 
-                    ingredients = {this.state.ingredients}
-                    checkoutCancelled={this.checkoutCancelledHandler}
-                    checkoutContinued={this.checkoutContinuedHandler}
-                    />                                                                
+                        ingredients = {this.state.ingredients}
+                        checkoutCancelled={this.checkoutCancelledHandler}
+                        checkoutContinued={this.checkoutContinuedHandler}
+                    />   
+                    <div style = {{backgroundColor: 'red'}}>                                                          
                     <Route path ={this.props.match.path + '/contact-data'}  render = {()=> (<ContactData ingredients ={this.state.ingredients} price = {this.state.totalPrice}/>)} />
+                    </div>   
                 </div>                                                    //you ca pass props inside brackets and pass props = {...props} in the component instead of withrouter
          );
     }

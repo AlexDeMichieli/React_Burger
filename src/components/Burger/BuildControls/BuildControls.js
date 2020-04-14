@@ -17,15 +17,15 @@ const useStyles = makeStyles({
       width: 'auto',
     },
     BuildControls : {
-        width: "100%",
+        height: "100%",
         backgroundColor: "#FBD6C6",
         display: "flex",
+        flexDirection: 'column',
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
         margin: "auto",
-        padding: "10px 0px",
-        marginTop: "20xpx"
+        width: '250px',
     },
     OrderButton : {
 
@@ -36,7 +36,6 @@ const useStyles = makeStyles({
       color: "white",
       fontFamily: 'inherit',
       fontSize: "1.2em",
-      marginLeft: '20px',
       padding: "15px 30px",
       boxShadow: "2px 2px 2px #966909",
     },
@@ -60,6 +59,8 @@ const buildControls =(props) => {
   const classes = useStyles();
   const [state, setState] = React.useState({
     bottom: false,
+    left: false,
+
   });
  
 
@@ -80,7 +81,7 @@ const buildControls =(props) => {
   const list = (anchor) => (
     <div
       className={clsx(classes.list, {
-        [classes.fullList]: anchor === 'bottom',
+        [classes.fullList]: anchor === 'top' || anchor === 'bottom'
       })}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
@@ -92,10 +93,10 @@ const buildControls =(props) => {
 
     return (
 
-        <Container style={{textAlign: 'center'}}>
-        {['bottom'].map((anchor) => (
+        <Container style={{textAlign: 'center' }}>
+        {['left'].map((anchor) => (
           <React.Fragment key={anchor}>
-              <Button onClick={toggleDrawer(anchor, true)}>Select Ingredients</Button>
+              <Button variant="contained" style={{backgroundColor: "rgb(161, 201, 241)", color: "white", display: 'block',height: "150px", marginBottom: '30px'}} onClick={toggleDrawer(anchor, true)}>Select Ingredients</Button>
               <Drawer  
                   BackdropProps={{ invisible: true }}
                   anchor={anchor} open={state[anchor]} 
@@ -117,7 +118,6 @@ const buildControls =(props) => {
                   <button 
                       className={[classes.OrderButton, styles.OrderButton].join(" ")} 
                       disabled={!props.purchasable}
-                      // onClick ={props.ordered}
                       onClick ={closeDrawer(anchor, false)}
                   >Order Now</button>
                 </div>
