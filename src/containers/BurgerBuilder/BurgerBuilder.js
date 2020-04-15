@@ -130,7 +130,7 @@ class BurgerBuilder extends Component {
 
         return (
 
-           <div style ={{paddingTop: '50px', display: 'flex', minHeight: '100vh', flexDirection: 'column'}}>
+           <div>
                 <Modal backdrop = {this.displayBackdrop} show={this.state.purchasing} modalClosed ={this.purchaseCancelHandler}>
                         {!this.state.loading ? 
                             <OrderSummary 
@@ -140,7 +140,7 @@ class BurgerBuilder extends Component {
                                 purchaseContinued = {this.purchaseContinueHandler}
                             /> : <Spinner></Spinner>}
                 </Modal>
-                        <div style={{flex: "1"}}>
+                        <div>
                              <Burger ingredients={this.state.ingredients}/>
                         </div>
                     <div>

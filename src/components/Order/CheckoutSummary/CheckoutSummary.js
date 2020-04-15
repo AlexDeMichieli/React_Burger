@@ -21,18 +21,17 @@ const checkoutSummary =(props)=>{
     return (
         <div className={classes.CheckoutSummary}>
             {checkoutMessage}
-           
                 <Burger ingredients={props.ingredients}/>
             
-            <div className ={classes.Text} style ={{backgroundColor: "red"}}>
-                <Button  btnType = 'Danger'
-                    clicked ={props.checkoutCancelled}>Cancel
-                </Button>
-                <Button  btnType = 'Success'
-                    clicked={props.checkoutContinued}>Continue
-                </Button>
-            </div>
-
+            {props.location.state ? 
+                (<div className ={classes.Text} style ={{backgroundColor: "red", flex: "1"}}>
+                    <Button  btnType = 'Danger'
+                        clicked ={props.checkoutCancelled}>Cancel
+                    </Button>
+                    <Button  btnType = 'Success'
+                        clicked={props.checkoutContinued}>Continue
+                    </Button>
+                </div> ) : ''}
         </div>
     )
 
