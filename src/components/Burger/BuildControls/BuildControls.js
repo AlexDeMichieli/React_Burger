@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './BuildControls.css'
 import BuildControl from './BuildControl/BuildControl'
 import Typography from '@material-ui/core/Typography';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -39,6 +38,21 @@ const useStyles = makeStyles({
       padding: "15px 30px",
       boxShadow: "2px 2px 2px #966909",
     },
+
+    PurchaseButton: {
+      backgroundColor: "rgb(161, 201, 241)", 
+      color: "white", 
+      display: 'block', 
+      height: "450px", 
+      width: "50px",
+      writingMode: "vertical-lr",
+      textOrientation: "upright",
+      position: "fixed",
+      top: "250px",
+      left: "10px"
+    },
+
+
   });
 
 
@@ -75,28 +89,16 @@ const buildControls =(props) => {
 
   const closeDrawer = (anchor, open) => (event) => {
     setState({ ...state, [anchor]: open });
-    props.ordered()
+    setTimeout(function(){ props.ordered(); }, 200);
+     
   }
-
-  const list = (anchor) => (
-    <div
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === 'top' || anchor === 'bottom'
-      })}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-    </div>
-  );
-
 
     return (
 
         <Container style={{textAlign: 'center' }}>
         {['left'].map((anchor) => (
           <React.Fragment key={anchor}>
-              <Button variant="contained" style={{backgroundColor: "rgb(161, 201, 241)", color: "white", display: 'block',height: "150px", marginBottom: '30px'}} onClick={toggleDrawer(anchor, true)}>Select Ingredients</Button>
+              <Button variant="contained" className = {classes.PurchaseButton} onClick={toggleDrawer(anchor, true)}><div style={{transform: "rotate(270deg)"}}>Select Ingredients</div></Button>
               <Drawer  
                   BackdropProps={{ invisible: true }}
                   anchor={anchor} open={state[anchor]} 
