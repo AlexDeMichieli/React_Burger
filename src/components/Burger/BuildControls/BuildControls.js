@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './BuildControls.css'
 import BuildControl from './BuildControl/BuildControl'
 import Typography from '@material-ui/core/Typography';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -93,19 +92,6 @@ const buildControls =(props) => {
     setTimeout(function(){ props.ordered(); }, 200);
      
   }
-
-  const list = (anchor) => (
-    <div
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === 'top' || anchor === 'bottom'
-      })}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-    </div>
-  );
-
 
     return (
 
