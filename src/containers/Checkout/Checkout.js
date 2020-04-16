@@ -17,7 +17,19 @@ const useStyles = makeStyles({
     fullList: {
       width: 'auto',
     },
-})
+    OrderButton : {
+
+      backgroundColor: "#DED29E",
+      outline: "none",
+      cursor: "pointer",
+      border: "1px solid #966909",
+      color: "white",
+      fontFamily: 'inherit',
+      fontSize: "1.2em",
+      padding: "15px 30px",
+      boxShadow: "2px 2px 2px #966909",
+    },
+  });
 
 const Checkout = (props) => {
     

@@ -140,7 +140,7 @@ class BurgerBuilder extends Component {
                                 purchaseContinued = {this.purchaseContinueHandler}
                             /> : <Spinner></Spinner>}
                 </Modal>
-                        <div>
+                        <div style={{paddingTop: '101px'}}>
                              <Burger ingredients={this.state.ingredients}/>
                         </div>
                     <div>

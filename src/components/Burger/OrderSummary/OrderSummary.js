@@ -3,6 +3,7 @@ import Button from '../../UI/Button/Button'
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
+import ButtonUI from '@material-ui/core/Button';
 
 const theme = createMuiTheme({
     spacing: [0, 4, 8, 16, 32, 64],
@@ -14,7 +15,23 @@ const useStyles = makeStyles({
     },
     spacing: {
         margin: theme.spacing(4),
-    }
+    },
+    buttonCancel: {
+        backgroundColor: "#f50057", 
+        width: "110px",
+        height: "50px",
+        color: "white",
+       
+     },
+     buttonContinue:{
+  
+      backgroundColor: "rgb(161, 201, 241)", 
+      width: "110px",
+      height: "50px",
+      color: "white",
+ 
+  
+     }
   });
 
 const orderSummary =(props)=> {
@@ -41,8 +58,8 @@ const orderSummary =(props)=> {
             <h3>Total Price</h3>
             <p>${props.price}</p>
             <p>Continue to Checkout?</p>
-            <Button btnType ='Danger' clicked ={props.purchaseCanceled}>Cancel</Button>
-            <Button btnType ='Success' clicked ={props.purchaseContinued}>Continue</Button>
+            <ButtonUI  className = {classes.buttonCancel} onClick ={props.purchaseCanceled}> Cancel</ButtonUI>
+            <ButtonUI  className = {classes.buttonContinue} onClick ={props.purchaseContinued}>Continue</ButtonUI>
         </div>
 
     )
