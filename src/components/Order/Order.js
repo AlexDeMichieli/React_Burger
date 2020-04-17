@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
-
+import axios from '../../axios-orders'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,6 +15,21 @@ const useStyles = makeStyles((theme) => ({
 
 const Order = (props) => {
     const classes = useStyles();
+    const [ingredients, setIngredients]=useState({ingredients: {} })
+    useEffect(()=> {
+
+      axios.get('/orders.json')
+      .then(res =>{
+        let keys = Object.values(res.data)
+        console.log(keys)
+        if (keys == null){
+          setIngredients({ingredients: 'void'})  
+        } 
+        for (let obj in keys)
+        setIngredients(keys[obj].ingredients)
+
+      })
+    }, [])
 
 
     return(

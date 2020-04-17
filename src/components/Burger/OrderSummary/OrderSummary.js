@@ -42,9 +42,9 @@ const orderSummary =(props)=> {
             <ul>
                 {ingredientSummary}
             </ul>
-            <h3>Total Price</h3>
-            <p>${props.price}</p>
-            <p>Continue to Checkout?</p>
+            <Typography className ={classes.font} variant="h5">Total Price:</Typography>
+            <Typography className ={classes.font} variant="h6" style={{marginBottom: '20px'}}>${props.price}</Typography>
+            <Typography className ={classes.font} variant="h6" style={{marginBottom: '20px'}}>Continue to Checkout?</Typography>
             <ButtonUI  className = {classes.buttonCancel} size="small" variant="outlined" color="secondary" onClick ={props.purchaseCanceled}> Cancel</ButtonUI>
             <ButtonUI size="small"  variant="outlined" color="primary" onClick ={props.purchaseContinued}>Continue</ButtonUI>
         </div>

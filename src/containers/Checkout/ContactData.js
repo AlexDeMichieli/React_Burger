@@ -16,6 +16,14 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(1),
         width: '25ch',
       },
+
+      form: {
+        backgroundColor: "azure",
+        width: "350px",
+        marginLeft: "8px",
+        position: "absolute", 
+        alignItems: 'center',
+      }
     },
   }));
 
@@ -70,21 +78,23 @@ const ContactData  = (props) => {
             <div>
             {!loading ?(
 
-             <Container fixed>
-                <h4>Enter your Info</h4>
-
-                <form className={classes.root} style={{textAlign: 'center'}} noValidate autoComplete="off">
+             <Container style={{position: "absolute", alignItems: 'center',top: "550px", marginLeft: "20px", backgroundColor: "azure", width: "300px"}}>
+                <form className={classes.root} style={{textAlign: 'center',  display: 'flex', flexDirection: 'column'}} noValidate autoComplete="off">
+                    <h4 >Enter your Info</h4>
                     <TextField id="standard-basic" label="name" variant="outlined"/>
                     <TextField id="filled-basic" label="address" variant="outlined" />
                     <TextField id="outlined-basic" label="something else " variant="outlined" />
                     <Button
                          variant="contained"
                          color="primary"
-                         style ={{display: 'block', margin: '20px auto'}}
                          onClick ={orderHandler}
                     >Send</Button>
                 </form>
-            </Container> ) : <Spinner/> }
+            </Container> ) : 
+            <Container style={{position: "absolute", alignItems: 'center',top: "550px", marginLeft: "20px", backgroundColor: "azure", width: "300px"}}>
+                <Spinner/> 
+            </Container> }
+            
             </div> 
         );
     }
