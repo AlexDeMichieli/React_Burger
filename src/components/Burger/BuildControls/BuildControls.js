@@ -98,7 +98,7 @@ const buildControls =(props) => {
         <Container style={{textAlign: 'center' }}>
         {['left'].map((anchor) => (
           <React.Fragment key={anchor}>
-              <Button variant="contained" className = {classes.PurchaseButton} onClick={toggleDrawer(anchor, true)}><div style={{transform: "rotate(270deg)"}}>Select Ingredients</div></Button>
+              <Button variant="contained" className = {classes.PurchaseButton} variant="contained" color="primary" onClick={toggleDrawer(anchor, true)}><div style={{transform: "rotate(270deg)"}}>Select Ingredients</div></Button>
               <Drawer  
                   BackdropProps={{ invisible: true }}
                   anchor={anchor} open={state[anchor]} 
