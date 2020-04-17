@@ -78,7 +78,11 @@ const Checkout = (props) => {
     }
 
     const checkoutContinuedHandler =()=>{
-        props.history.replace('/checkout/contact-data')
+        // props.history.replace('/checkout/contact-data')
+        props.history.push({
+            pathname: '/checkout/contact-data',
+            state: {ingredients: ingredients.ingredients, price: price.totalPrice}
+        })
     }
 
         return ( 

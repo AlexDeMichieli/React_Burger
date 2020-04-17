@@ -22,6 +22,7 @@ const useStyles = makeStyles(theme => ({
 
 
 const ContactData  = (props) => {
+    console.log('from contact data', props)
     const classes = useStyles();
     const [loading, setLoading] = useState(false)
     const [list, setList] = useState({  
