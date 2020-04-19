@@ -6,7 +6,6 @@ const Orders = (props) => {
     return(
         <div>
             <Order/>
-            <Order/>
         </div>
     )
 }
