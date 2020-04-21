@@ -130,7 +130,7 @@ class BurgerBuilder extends Component {
 
         return (
 
-           <div>
+           <div style={{height: '100vh', backgroundColor: 'antiquewhite', overflow: 'scroll'}}>
                 <Modal backdrop = {this.displayBackdrop} show={this.state.purchasing} modalClosed ={this.purchaseCancelHandler}>
                         {!this.state.loading ? 
                             <OrderSummary 

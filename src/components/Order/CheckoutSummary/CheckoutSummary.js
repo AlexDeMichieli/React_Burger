@@ -1,11 +1,9 @@
 import React from 'react';
 import Burger from '../../Burger/Burger'
-import Button from '../../UI/Button/Button'
 import styles from './CheckoutSummary.css'
 import {withRouter} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonUI from '@material-ui/core/Button';
-import { withTheme } from '@material-ui/styles';
 
 
 const useStyles = makeStyles({
@@ -70,11 +68,12 @@ const checkoutSummary =(props)=>{
     }
     
     return (
-        <div className={styles.CheckoutSummary}>
+        <div className={styles.CheckoutSummary} 
+        style={{height: '100vh', backgroundColor: 'antiquewhite', overflow: 'scroll'}}
+        >
             {checkoutMessage}
-            
             <Burger ingredients={props.ingredients}/>
-            
+    
             {props.location.state ? 
                 (
                     <div className ={classes.bar}>
@@ -95,20 +94,3 @@ const checkoutSummary =(props)=>{
 
 }
 export default withRouter(checkoutSummary)
-
-
-
-        // <div className={styles.CheckoutSummary}>
-
-        //     <h1 className ={styles.Text} >Ready to Pay?</h1>
-      
-        //     <Burger ingredients={props.ingredients}/>
-        //         <div className ={classes.bar}>
-        //             <ButtonUI  className = {classes.buttonCancel} variant="contained" color="secondary"
-        //                 onClick ={props.checkoutCancelled}>Cancel
-        //             </ButtonUI>
-        //             <ButtonUI className = {classes.buttonContinue} variant="contained" color="primary"
-        //                 onClick={props.checkoutContinued}>Continue
-        //             </ButtonUI>
-        //         </div> 
-        // </div>
