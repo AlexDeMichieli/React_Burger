@@ -18,7 +18,7 @@ const order = ( props ) => {
   const classes = useStyles();
 
   const ingredients = Object.entries(props.ingredients).map(item => {
-      return (<p key={item}>{item[0]}</p> )
+      return (<p key={item}>{item[0]} : {item[1]}</p> )
   })
 
 
