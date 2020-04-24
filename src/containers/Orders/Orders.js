@@ -16,8 +16,9 @@ const Orders = (props) => {
                 const myOrders = []
                 let keys = Object.values(res.data)
                 
-                for (let ingredients in Object.entries(keys)){
-                    myOrders.push(Object.values(keys)[ingredients].ingredients)
+                for (let orderDeatils in Object.entries(keys)){
+                    console.log(Object.values(keys)[orderDeatils])
+                    myOrders.push(Object.values(keys)[orderDeatils])
                 }
 
                 setOrder(myOrders);
