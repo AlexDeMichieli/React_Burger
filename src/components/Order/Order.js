@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
+import ButtonUI from '@material-ui/core/Button';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,7 +23,7 @@ const order = ( props ) => {
   const [price, setPrice] = useState([])
 
   const ingredients = Object.entries(props.ingredients.ingredients).map(item => {
-      return (<p key={item}>{item[0]} : {item[1]}</p> )
+      return (<p key={item}><i>{item[0]} : {item[1]}</i></p> )
   })
 
   useEffect(()=>{
@@ -40,6 +41,7 @@ const order = ( props ) => {
       infoNameEmail.push(props.ingredients[key].email, props.ingredients[key].name )
 
       for (let key in props )
+      console.log(props.ingredients.price)
       price.push(props.ingredients.price)
 
       setCustInfo(infoNameEmail)
@@ -51,22 +53,24 @@ const order = ( props ) => {
   },[])
 
   const address = custAddress.map((el, item)=> {
-    return <p key={item}>{el}</p>
+    return <p key={item}><i>{el}</i></p>
   })
 
   const infos = custInfo.map((item, el)=> {
-    return <p key={el}>{item}</p>
+    return <p key={el}><i>{item}</i></p>
 
   })
 
   const totalCost = price.map((item, el)=> {
-    return <p key={el}>{item}</p>
+    return <p key={el}><i>{item}</i></p>
 
   })
 
+
+
     return (
-    <Container maxWidth="sm" >
-       <Paper elevation={2} className = {[classes.root, classes.margin].join(" ")}>
+    <Container maxWidth="sm">
+           <Paper elevation={2} className = {[classes.root, classes.margin].join(" ")}>
          <h3>Ingredients:</h3>
             {ingredients}
          <h3>Address:</h3>
@@ -74,6 +78,7 @@ const order = ( props ) => {
          <h3>Customer Details:</h3>
             {infos}
          <h3>Price : <strong>{totalCost}</strong></h3>
+         <ButtonUI onClick ={props.clicked} variant="contained" color="secondary">Delete Order</ButtonUI>
        </Paper>
    </Container>
     );
