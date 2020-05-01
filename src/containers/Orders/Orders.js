@@ -96,7 +96,7 @@ const Orders = (props) => {
 
    
         return (
-            <div>
+            <div style={{minHeight: '100vh'}}>
                 {Object.values(order).map((index, number) => (
                     <Order
                         clicked ={() => deleteOrder(index, number)}

@@ -74,6 +74,10 @@ const ContactData  = (props) => {
           })  
     }
 
+    const test = (e) => {
+        console.log(e.target.value)
+    }
+
         return ( 
             <div>
             {!loading ?(
@@ -81,7 +85,7 @@ const ContactData  = (props) => {
              <Container style={{position: "absolute", alignItems: 'center',top: "550px", marginLeft: "20px", backgroundColor: "azure", width: "300px"}}>
                 <form className={classes.root} style={{textAlign: 'center',  display: 'flex', flexDirection: 'column'}} noValidate autoComplete="off">
                     <h4 >Enter your Info</h4>
-                    <TextField id="standard-basic" label="name" variant="outlined"/>
+                    <TextField onChange={(e)=> test(e)}id="standard-basic" label="name" variant="outlined"/>
                     <TextField id="filled-basic" label="address" variant="outlined" />
                     <TextField id="outlined-basic" label="something else " variant="outlined" />
                     <Button
