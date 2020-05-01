@@ -79,25 +79,27 @@ const Orders = (props) => {
             });
     }, [])
 
+    
+
     const deleteOrder = (index, number) => {
-        let id = order[index].id
-        console.log(id)
+
+        let id = index.id
+        console.log(id, number)
         let splitArray = [...order]
         axios.delete(
             `/orders/${id}.json`
         )
         let removeArticle = splitArray.splice(number, 1)
         setOrder(splitArray)
+
       }
 
-        console.log(Object.values(order).map((index, number) => {
-            console.log(index.id)
-        }))
+   
         return (
             <div>
                 {Object.values(order).map((index, number) => (
                     <Order
-                        clicked ={() => deleteOrder(number)}
+                        clicked ={() => deleteOrder(index, number)}
                         values = {index,number}
                         key={number}
                         ingredients={index.order}
