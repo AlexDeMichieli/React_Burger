@@ -6,6 +6,7 @@ import Container from '@material-ui/core/Container';
 import axios from '../../axios-orders'
 import Spinner from '../../components/UI/Spinner/Spinner'
 import {withRouter} from 'react-router-dom'
+// import Input from '../../components/UI/Input/Input'
 
 
 
@@ -86,7 +87,7 @@ const ContactData  = (props) => {
                 <form className={classes.root} style={{textAlign: 'center',  display: 'flex', flexDirection: 'column'}} noValidate autoComplete="off">
                     <h4 >Enter your Info</h4>
                     <TextField onChange={(e)=> test(e)}id="standard-basic" label="name" variant="outlined"/>
-                    <TextField id="filled-basic" label="address" variant="outlined" />
+                    <TextField required id="filled-basic" label="address" variant="outlined" />
                     <TextField id="outlined-basic" label="something else " variant="outlined" />
                     <Button
                          variant="contained"
