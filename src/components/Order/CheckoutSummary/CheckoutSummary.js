@@ -69,7 +69,7 @@ const checkoutSummary =(props)=>{
     
     return (
         <div className={styles.CheckoutSummary} 
-        style={{height: '100vh', backgroundColor: 'antiquewhite', overflow: 'scroll'}}
+        style={{height: '100vh', overflow: 'scroll'}}
         >
             {checkoutMessage}
             <Burger ingredients={props.ingredients}/>
