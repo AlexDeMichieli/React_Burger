@@ -6,6 +6,7 @@ import Container from '@material-ui/core/Container';
 import axios from '../../axios-orders'
 import Spinner from '../../components/UI/Spinner/Spinner'
 import {withRouter} from 'react-router-dom'
+// import Input from '../../components/UI/Input/Input'
 
 
 
@@ -83,7 +84,7 @@ const ContactData  = (props) => {
             {!loading ?(
 
              <Container style={{position: "absolute", alignItems: 'center',top: "550px", marginLeft: "20px", backgroundColor: "azure", width: "300px"}}>
-                <form className={classes.root} style={{textAlign: 'center',  display: 'flex', flexDirection: 'column'}} noValidate autoComplete="off">
+                <form onSubmit={orderHandler} className={classes.root} style={{textAlign: 'center',  display: 'flex', flexDirection: 'column'}} autoComplete="off">
                     <h4 >Enter your Info</h4>
                     <TextField onChange={(e)=> test(e)}id="standard-basic" label="name" variant="outlined"/>
                     <TextField required id="filled-basic" label="address" variant="outlined" />
@@ -91,9 +92,10 @@ const ContactData  = (props) => {
                     <Button
                          variant="contained"
                          color="primary"
-                         onClick ={orderHandler}
+                         type="submit" value="Submit"
                     >Send</Button>
                 </form>
+
             </Container> ) : 
             <Container style={{position: "absolute", alignItems: 'center',top: "550px", marginLeft: "20px", backgroundColor: "azure", width: "300px"}}>
                 <Spinner/> 

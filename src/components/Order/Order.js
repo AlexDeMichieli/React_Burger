@@ -25,7 +25,7 @@ const order = ( props ) => {
   const ingredients = Object.entries(props.ingredients.ingredients).map(item => {
       return (<p key={item}><i>{item[0]} : {item[1]}</i></p> )
   })
-
+  console.log(Object.entries(props.ingredients.ingredients))
   useEffect(()=>{
 
     const getInfos = () => {
@@ -70,7 +70,7 @@ const order = ( props ) => {
 
     return (
     <Container maxWidth="sm">
-           <Paper elevation={2} className = {[classes.root, classes.margin].join(" ")}>
+        <Paper elevation={2} className = {[classes.root, classes.margin].join(" ")}>
          <h3>Ingredients:</h3>
             {ingredients}
          <h3>Address:</h3>
