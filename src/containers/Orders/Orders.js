@@ -39,7 +39,7 @@ const Orders = (props) => {
         axios.delete(
             `/orders/${id}.json`
         )
-        let removeArticle = splitArray.splice(number, 1)
+        let removeOrder = splitArray.splice(number, 1)
         setOrder(splitArray)
 
       }
