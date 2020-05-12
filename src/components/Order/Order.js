@@ -28,13 +28,13 @@ const order = ( props ) => {
     <Container maxWidth="sm">
         <Paper elevation={2} className = {[classes.root, classes.margin].join(" ")}>
          <h3>Ingredients:</h3>
-            {ingredients}
-            <h3>Name:</h3>
-            {props.ingredients.customer.name}
+         <i>{ingredients}</i>
+          <h3>Name:</h3>
+          <i>{props.ingredients.customer.name}</i>
           <h3>Email Address:</h3>
-            {props.ingredients.customer.address}
+          <i>{props.ingredients.customer.address}</i>
          <h3>Additional information:</h3>
-            {props.ingredients.customer.info} 
+         <i>{props.ingredients.customer.info}</i>
          <h3>Price : <strong>{props.ingredients.price}</strong></h3>
          <ButtonUI onClick ={props.clicked} variant="contained" color="secondary">Delete Order</ButtonUI>
        </Paper>
