@@ -1,0 +1,3 @@
+Inspired by the course of Maximilian Schwarzmüller
+
+This is a burger builder styled with Material UI and connected to FireBase
