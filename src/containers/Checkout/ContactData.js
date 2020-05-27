@@ -44,23 +44,7 @@ const ContactData  = (props) => {
     const orderHandler = (event) =>{
         event.preventDefault();
         setLoading(true)
-        // const test = new FormData();
-        // test.append("name", name);
-        // test.append("address", address);
-        // test.append("info", info);
-
-        // const order ={
-        //     ingredients : props.ingredients,
-        //     price: props.price,
-        //     customer : {
-        //         name: 'Alex',
-        //         address : {
-        //             state: 'Portland',
-        //             zipcode: '123'
-        //         },
-        //         email : 'myemail'
-        //     }    
-        // }
+ 
         const order ={
             ingredients : props.ingredients,
             price: props.price,
@@ -70,11 +54,7 @@ const ContactData  = (props) => {
                 info : info,
             }    
         }
-        // console.log(order)
-
-        // for (let [name, value] of order) {
-        //     console.log(`${name} : ${value}`);
-        //   }
+ 
         axios.post('/orders.json', order) //json is only for firebase
              .then(res => {
                setLoading(false)
@@ -98,7 +78,7 @@ const ContactData  = (props) => {
                 <form onSubmit={orderHandler} className={classes.root} style={{textAlign: 'center',  display: 'flex', flexDirection: 'column'}} autoComplete="off">
                     <h4 >Enter your Info</h4>
                     <TextField onChange={(e)=> setName(e.target.value)}id="standard-basic" label="Name" variant="outlined"/>
-                    <TextField onChange={(e)=> setAddress(e.target.value)} required id="filled-basic" label=" Email Address" variant="outlined" />
+                    <TextField onChange={(e)=> setAddress(e.target.value)} required id="filled-basic" label="Email Address" variant="outlined" />
                     <TextField onChange={(e)=> setInfo(e.target.value)} id="outlined-basic" label="Additional information" variant="outlined" />
                     <Button
                          variant="contained"

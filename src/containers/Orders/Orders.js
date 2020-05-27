@@ -14,7 +14,7 @@ const Orders = (props) => {
         axios.get('/orders.json')
             .then(res => {
                 const myOrders = []
-                console.log(res.data)
+                console.log('DATA FROM DB',res.data)
                 let keys = res.data
                 for (let orderDeatils in keys){
                     myOrders.push({id: orderDeatils, order: keys[orderDeatils]})
